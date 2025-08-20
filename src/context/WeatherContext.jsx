@@ -11,8 +11,13 @@ export function WeatherProvider({ children }) {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
+  // funzione per rimuovere una città
+  const removeCity = (id) => {
+    setWatchlist((prev) => prev.filter((city) => city.id !== id));
+  };
+
   return (
-    <WeatherContext.Provider value={{ watchlist, setWatchlist }}>
+    <WeatherContext.Provider value={{ watchlist, setWatchlist, removeCity }}>
       {children}
     </WeatherContext.Provider>
   );
