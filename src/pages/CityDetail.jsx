@@ -98,7 +98,7 @@ export default function CityDetail() {
         </LineChart>
       </ResponsiveContainer>
 
-      <h4 className="mt-4">Previsioni prossimi 5 giorni</h4>
+      <h4 className="mt-4">Previsioni prossimi 6 giorni</h4>
       <div className="d-flex flex-wrap justify-content-center gap-3">
   {forecast.map((item, idx) => (
     <div

@@ -34,32 +34,45 @@ export default function WeatherCard({ city, onRemove, dragHandleProps }) {
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center">
           <h5 className="card-title">{city.name}</h5>
-          <span {...dragHandleProps} style={{ cursor: "grab", fontSize: "1.2rem" }}>☰</span>
+          <span
+            {...dragHandleProps}
+            style={{ cursor: "grab", fontSize: "1.2rem" }}
+          >
+            ☰
+          </span>
         </div>
 
-        <p className="card-text">
-          Temperatura: {weather.main.temp}°C <br />
-          Umidità: {weather.main.humidity}% <br />
-          Condizioni: {weather.weather[0].description}
+        {/* Dettagli meteo con icone/emoji */}
+        <p className="card-text">🌡️ Temperatura: {weather.main.temp}°C</p>
+        <p className="card-text">💧 Umidità: {weather.main.humidity}%</p>
+        <p className="card-text d-flex align-items-center gap-2">
+          <img
+            src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+            alt={weather.weather[0].description}
+            style={{ width: "30px", height: "30px" }}
+          />
+          {weather.weather[0].description}
         </p>
 
-  <h6>Previsioni prossimi 5 giorni</h6>
-<div className="d-flex flex-wrap justify-content-between">
+        {/* Previsioni */}
+     <h6>Previsioni prossimi 5 giorni</h6>
+<div className="d-flex justify-content-between text-center">
   {forecast.map((item, index) => (
     <div
       key={index}
-      className="text-center p-2"
+      className="p-1 flex-fill"
       style={{
-        flex: "1 1 100px", // larghezza minima 100px, cresce se c'è spazio
-        maxWidth: "120px",
-        marginBottom: "10px",
+        minWidth: "0",   // per permettere la compressione
+        fontSize: "0.8rem",
       }}
     >
-      <div>{new Date(item.dt_txt).toLocaleDateString("it-IT")}</div>
+      <div>
+        {new Date(item.dt_txt).toLocaleDateString("it-IT", { day: "2-digit", month: "2-digit" })}
+      </div>
       <img
-        src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+        src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
         alt={item.weather[0].description}
-        style={{ width: "50px", height: "50px" }}
+        style={{ width: "35px", height: "35px" }}
       />
       <div>{Math.round(item.main.temp)}°C</div>
     </div>
@@ -70,7 +83,10 @@ export default function WeatherCard({ city, onRemove, dragHandleProps }) {
         <button
           type="button"
           className="btn btn-danger mt-2"
-          onClick={(e) => { e.stopPropagation(); onRemove(city.id); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove(city.id);
+          }}
         >
           Rimuovi
         </button>
