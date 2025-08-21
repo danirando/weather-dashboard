@@ -121,6 +121,19 @@ export default function CityDetail() {
   ))}
 </div>
 
+{/* RADAR METEO */}
+<h4 className="mt-4">Radar meteo</h4>
+<div className="mb-4" style={{ width: "100%", height: "500px" }}>
+  <iframe
+    title="Radar Meteo"
+    width="100%"
+    height="100%"
+    src={`https://embed.windy.com/embed2.html?lat=${weather.coord.lat}&lon=${weather.coord.lon}&zoom=7&overlay=radar`}
+    frameBorder="0"
+  />
+</div>
+
+
     </div>
   );
 }
