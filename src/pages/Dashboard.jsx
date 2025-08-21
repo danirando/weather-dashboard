@@ -20,8 +20,11 @@ export default function Dashboard() {
 
   return (
     <div className="container my-4">
-    
-        <h1>Dashboard Meteo</h1>
+      <div className="title-container">
+
+        <h1>🌤️ Dashboard Meteo</h1>
+      </div>    
+        
         <SearchBar />
       
       

@@ -1,0 +1,14 @@
+body {
+    background-image: url(../backgorund-pattern.png);
+}
+
+.container h1 {
+    color: white;
+}
+
+.title-container {
+    padding: 10px 0;
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.902);
+}

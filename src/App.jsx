@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { WeatherProvider } from "./context/WeatherContext";
 import Dashboard from "./pages/Dashboard";
-import CityDetail from "./pages/CityDetail"; // pagina che svilupperai
+import CityDetail from "./pages/CityDetail"; 
 
 function App() {
   return (

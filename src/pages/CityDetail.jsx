@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import api from "../api";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { FaCloudRain, FaSnowflake, FaWind, FaSun, FaTemperatureHigh, FaTemperatureLow, FaTint, FaCompressArrowsAlt } from "react-icons/fa";
+import "../assets/css/Detail.css"
 
 export default function CityDetail() {
   const { id } = useParams();
@@ -73,22 +74,82 @@ export default function CityDetail() {
   return (
     <div className="container my-4">
       <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>Torna indietro</button>
-
-      <h2>{weather.name}</h2>
+     <div className="custom-container">
+       
+        <h2>{weather.name}</h2>
       <div className="mb-3"></div>
 
-      <div className="mb-4">
-        <p>Condizioni: {weather.weather[0].description} <span>{indicators}</span></p>
-        <p><FaTemperatureHigh className="me-2 text-danger" />Temperatura attuale: {weather.main.temp}°C</p>
-        <p><FaTemperatureLow className="me-2 text-primary" />Min: {weather.main.temp_min}°C, Max: {weather.main.temp_max}°C</p>
-        <p><FaTint className="me-2 text-info" />Umidità: {weather.main.humidity}%</p>
-        <p><FaCompressArrowsAlt className="me-2 text-secondary" />Pressione: {weather.main.pressure} hPa</p>
-        <p><FaWind className="me-2 text-warning" />Vento: {weather.wind.speed} m/s</p>
-        
-        <p>Visibilità: {weather.visibility} m</p>
-      </div>
+ <div className="weather-info">
+  {/* Condizione principale */}
+  <div className="text-center mb-3">
+    <h3 className="fw-bold text-capitalize">
+      {weather.weather[0].description} {indicators && <span>{indicators}</span>}
+    </h3>
+  </div>
 
-      <h4>Temperatura oraria</h4>
+  {/* Info in cards */}
+  <div className="row g-2 text-center">
+    {/* Temperatura attuale */}
+    <div className="col-4">
+      <div className="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <FaTemperatureHigh className="mb-1 text-danger mx-auto" size={24} />
+        <small className="text-muted">Temperatura</small>
+        <strong>{weather.main.temp}°C</strong>
+      </div>
+    </div>
+
+    {/* Min / Max */}
+    <div className="col-4">
+      <div className="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <FaTemperatureLow className="mb-1 text-primary mx-auto" size={24} />
+        <small className="text-muted">Min / Max</small>
+        <strong>{weather.main.temp_min}°C / {weather.main.temp_max}°C</strong>
+      </div>
+    </div>
+
+    {/* Umidità */}
+    <div className="col-4">
+      <div className="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <FaTint className="mb-1 text-info mx-auto" size={24} />
+        <small className="text-muted">Umidità</small>
+        <strong>{weather.main.humidity}%</strong>
+      </div>
+    </div>
+
+    {/* Pressione */}
+    <div className="col-4">
+      <div className="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <FaCompressArrowsAlt className="mb-1 text-secondary mx-auto" size={24} />
+        <small className="text-muted">Pressione</small>
+        <strong>{weather.main.pressure} hPa</strong>
+      </div>
+    </div>
+
+    {/* Vento */}
+    <div className="col-4">
+      <div className="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <FaWind className="mb-1 text-warning mx-auto" size={24} />
+        <small className="text-muted">Vento</small>
+        <strong>{weather.wind.speed} m/s</strong>
+      </div>
+    </div>
+
+    {/* Visibilità */}
+    <div className="col-4">
+      <div className="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <small className="text-muted">Visibilità</small>
+        <strong>{weather.visibility} m</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     </div>
+     
+<div className="custom-container white">
+
+<h4>Temperatura oraria</h4>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={hourly}>
           <XAxis dataKey="hour" label={{ value: "Ora", position: "insideBottomRight", offset: -5 }} />
@@ -98,7 +159,11 @@ export default function CityDetail() {
         </LineChart>
       </ResponsiveContainer>
 
-      <h4 className="mt-4">Previsioni prossimi 6 giorni</h4>
+</div>
+      
+<div className="custom-container">
+
+         <h4>Previsioni prossimi 6 giorni</h4>
       <div className="d-flex flex-wrap justify-content-center gap-3">
   {forecast.map((item, idx) => (
     <div
@@ -121,9 +186,13 @@ export default function CityDetail() {
   ))}
 </div>
 
+</div>
+ 
+<div className="custom-container">
+
 {/* RADAR METEO */}
-<h4 className="mt-4">Radar meteo</h4>
-<div className="mb-4" style={{ width: "100%", height: "500px" }}>
+<h4>Radar meteo</h4>
+<div  style={{ width: "100%", height: "500px" }}>
   <iframe
     title="Radar Meteo"
     width="100%"
@@ -131,6 +200,9 @@ export default function CityDetail() {
     src={`https://embed.windy.com/embed2.html?lat=${weather.coord.lat}&lon=${weather.coord.lon}&zoom=7&overlay=radar`}
     frameBorder="0"
   />
+</div>
+
+
 </div>
 
 

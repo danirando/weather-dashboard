@@ -1,0 +1,17 @@
+h2 {
+    color: white !important;
+}
+
+.custom-container {
+    color: white;
+    background-color: rgba(128, 128, 128, 0.902);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-container.white {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.888);
+
+}

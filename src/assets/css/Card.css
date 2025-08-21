@@ -1,0 +1,16 @@
+.card.main {
+    background-color: rgba(128, 128, 128, 0.902);
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    /* angoli leggermente arrotondati */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* ombra leggera */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card.main:hover {
+    transform: translateY(-3px);
+    /* effetto sollevamento al passaggio */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
