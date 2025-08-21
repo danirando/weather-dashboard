@@ -3,6 +3,7 @@ import { WeatherContext } from "../context/WeatherContext";
 import WeatherCard from "../components/WeatherCard";
 import SearchBar from "../components/SearchBar";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import "../assets/css/Dashboard.css"
 
 export default function Dashboard() {
   const { watchlist, setWatchlist, removeCity } = useContext(WeatherContext);
@@ -19,7 +20,11 @@ export default function Dashboard() {
 
   return (
     <div className="container my-4">
-      <SearchBar />
+    
+        <h1>Dashboard Meteo</h1>
+        <SearchBar />
+      
+      
 
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="cities" direction="vertical">

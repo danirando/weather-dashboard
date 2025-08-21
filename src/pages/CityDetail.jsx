@@ -75,15 +75,16 @@ export default function CityDetail() {
       <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>Torna indietro</button>
 
       <h2>{weather.name}</h2>
-      <div className="mb-3">{indicators}</div>
+      <div className="mb-3"></div>
 
       <div className="mb-4">
-        <p><FaTemperatureHigh className="me-2 text-danger" />Temperatura: {weather.main.temp}°C</p>
+        <p>Condizioni: {weather.weather[0].description} <span>{indicators}</span></p>
+        <p><FaTemperatureHigh className="me-2 text-danger" />Temperatura attuale: {weather.main.temp}°C</p>
         <p><FaTemperatureLow className="me-2 text-primary" />Min: {weather.main.temp_min}°C, Max: {weather.main.temp_max}°C</p>
         <p><FaTint className="me-2 text-info" />Umidità: {weather.main.humidity}%</p>
         <p><FaCompressArrowsAlt className="me-2 text-secondary" />Pressione: {weather.main.pressure} hPa</p>
         <p><FaWind className="me-2 text-warning" />Vento: {weather.wind.speed} m/s</p>
-        <p>Condizioni: {weather.weather[0].description}</p>
+        
         <p>Visibilità: {weather.visibility} m</p>
       </div>
 
