@@ -78,7 +78,7 @@ npm run dev
 
 Backend: Laravel, PHP, SQLite
 
-Frontend: React, Vite, Tailwind CSS
+Frontend: React, Vite, Bootstrap
 
 API esterne: OpenWeatherMap (Geocoding + Weather + Forecast)
 
